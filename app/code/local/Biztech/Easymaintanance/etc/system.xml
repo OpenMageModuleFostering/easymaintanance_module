@@ -38,7 +38,7 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </allowforadmin>  
-                       
+
                         
                         <page_title translate="label">
                             <label>Page Title</label>
@@ -114,15 +114,15 @@
                             <show_in_store>1</show_in_store>
                         </background_image>
                         
-                          <redirecturl translate="label">
+                        <redirecturl translate="label">
                             <label>ByPass Url</label>
-                             <comment> Admin can allow access to specific URL for their customers if added here.Write each url in new line(For e.g /api/soap,/contacts/)</comment>
+                            <comment> Admin can allow access to specific URL for their customers if added here.Write each url in new line(For e.g /api/soap /contacts/)</comment>
                             <frontend_type>textarea</frontend_type>
                             <sort_order>12</sort_order>
                             <show_in_default>1</show_in_default>
-                            <show_in_website>0</show_in_website>
+                            <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
-                          </redirecturl>            
+                        </redirecturl>            
                         
                         <maintenanceHtml translate="label">
                             <label>Maintenance Page HTML</label>
@@ -131,7 +131,7 @@
                             <frontend_model>easymaintanance/adminhtml_system_config_editor</frontend_model>
                             <sort_order>13</sort_order>
                             <show_in_default>1</show_in_default>
-                            <show_in_website>0</show_in_website>
+                            <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </maintenanceHtml>       
                         
@@ -156,7 +156,7 @@
                             <show_in_store>1</show_in_store>
                         </timer_enabled>
                         
-                         <site_enabled translate="label">
+                        <site_enabled translate="label">
                             <label>Make site live when Timer expires</label>
                             <comment>Select Yes to make site live when timer expires</comment>
                             <frontend_type>select</frontend_type>
@@ -166,7 +166,7 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </site_enabled>
-                          
+
                         <timer_text translate="label">
                             <label>Timer text</label>
                             <comment>Add text for timer</comment>
@@ -335,7 +335,7 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </title> 
-                          <message translate="label">
+                        <message translate="label">
                             <label>Notify Message</label>
                             <frontend_type>text</frontend_type>
                             <sort_order>3</sort_order>
