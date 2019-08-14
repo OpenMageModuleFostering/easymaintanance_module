@@ -176,9 +176,10 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </timer_text>
-                        <timer_date translate="label">
-                            <label>Date</label>
-                            <comment>Add Date for set timer</comment>
+                        
+                        <timer_start_date translate="label">
+                            <label>Start Date</label>
+                            <comment>Add Date for Start timer</comment>
                             <frontend_type>text</frontend_type>
                             <frontend_model>easymaintanance/adminhtml_system_config_date</frontend_model> 
                             <sort_order>4</sort_order>
@@ -187,21 +188,25 @@
                             <show_in_store>1</show_in_store>
                             <validate>required-entry</validate>
                             <depends><timer_enabled>1</timer_enabled></depends>
-                        </timer_date>
-                        <timer_hour translate="label">
-                            <label>Hour</label>
-                            <comment>Add Hour in 24-hour format when you want to finish timer</comment>
+                        </timer_start_date>
+                        
+                        <timer_end_date translate="label">
+                            <label>End Date</label>
+                            <comment>Add Date for set timer</comment>
                             <frontend_type>text</frontend_type>
+                            <frontend_model>easymaintanance/adminhtml_system_config_date</frontend_model>
                             <sort_order>5</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                             <validate>required-entry</validate>
                             <depends><timer_enabled>1</timer_enabled></depends>
-                        </timer_hour>
-                        <timer_min translate="label">
-                            <label>Minute</label>
-                            <comment>Add Minute when you want to finish timer</comment>
+                        </timer_end_date>
+                        
+                        <timer_start_hour translate="label">
+                            <label>Start Hour</label>
+                            <comment>Add Hour in 24-hour format when you want to start timer</comment>
+                            <backend_model>easymaintanance/validatehour</backend_model>
                             <frontend_type>text</frontend_type>
                             <sort_order>6</sort_order>
                             <show_in_default>1</show_in_default>
@@ -209,12 +214,53 @@
                             <show_in_store>1</show_in_store>
                             <validate>required-entry</validate>
                             <depends><timer_enabled>1</timer_enabled></depends>
-                        </timer_min>
+                        </timer_start_hour>
+                        
+                        
+                        <timer_end_hour translate="label">
+                            <label>End Hour</label>
+                            <comment>Add Hour in 24-hour format when you want to finish timer</comment>
+                            <backend_model>easymaintanance/validatehour</backend_model>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>7</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                            <depends><timer_enabled>1</timer_enabled></depends>
+                        </timer_end_hour>
+                        
+                        <timer_start_min translate="label">
+                            <label>Start Minute</label>
+                            <comment>Add Minute when you want to start timer. It should not be greater than 60.</comment> 
+                            <backend_model>easymaintanance/validatemin</backend_model>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>8</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                            <depends><timer_enabled>1</timer_enabled></depends>
+                        </timer_start_min>
+                        
+                        <timer_end_min translate="label">
+                            <label>End Minute</label>
+                            <comment>Add Minute when you want to finish timer. It should not be greater than 60.</comment> 
+                            <backend_model>easymaintanance/validatemin</backend_model>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>9</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                            <depends><timer_enabled>1</timer_enabled></depends>
+                        </timer_end_min>
+                        
                         <timer_alert translate="label">
                             <label>Alert Minutes</label>
                             <comment>Add Minute to notify when timer comes to end</comment>
                             <frontend_type>text</frontend_type>
-                            <sort_order>7</sort_order>
+                            <sort_order>10</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
@@ -222,7 +268,7 @@
                         <timer_email translate="label">
                             <label>Recipient Email</label>
                             <frontend_type>text</frontend_type>
-                            <sort_order>8</sort_order>
+                            <sort_order>11</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
@@ -230,7 +276,7 @@
                         <timer_email_template translate="label">
                             <label>Email Template</label>
                             <frontend_type>textarea</frontend_type>
-                            <sort_order>9</sort_order>
+                            <sort_order>12</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>

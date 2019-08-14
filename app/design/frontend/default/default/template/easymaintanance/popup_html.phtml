@@ -8,6 +8,7 @@ if($customer->isLoggedIn()){
     $name = '';
     $email = '';
 }
+Mage::getSingleton('core/translate')->setLocale(Mage::app()->getLocale()->getLocaleCode())->init('frontend', true);
 ?>
 <?php if($config=="1") { ?>
 <div class="side-feedback">

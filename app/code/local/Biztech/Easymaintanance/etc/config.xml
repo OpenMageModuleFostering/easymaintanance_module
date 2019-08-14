@@ -10,7 +10,7 @@
 <config>
     <modules>
         <Biztech_Easymaintanance>
-            <version>0.1.4</version>
+            <version>0.1.5</version>
         </Biztech_Easymaintanance>
     </modules>
     <frontend>
@@ -40,7 +40,7 @@
             </modules>
         </translate>
     </frontend>
-    <admin>
+    <!--<admin>
         <routers>
             <easymaintanance>
                 <use>admin</use>
@@ -50,8 +50,19 @@
                 </args>
             </easymaintanance>
         </routers>
+    </admin>-->
+    <admin>
+        <routers>
+                <adminhtml>
+                    <args>
+                    <modules>
+                        <easymaintanance after="Mage_Adminhtml">Biztech_Easymaintanance_Adminhtml</easymaintanance>
+                        </modules>
+                    </args>
+                </adminhtml>
+        </routers>
     </admin>
-    <adminhtml>
+    <adminhtml> 
         <menu>
             <easymaintanance module="easymaintanance">
                 <title>EasySiteMaintenance</title>
@@ -60,12 +71,12 @@
                     <items module="easymaintanance">
                         <title>Manage Notification</title>
                         <sort_order>0</sort_order>
-                        <action>easymaintanance/adminhtml_notification</action>
+                        <action>adminhtml/notification/notification</action>
                     </items>
                 </children>
             </easymaintanance>
         </menu>
-        <acl>
+   <acl>
             <resources>
                 <all>
                     <title>Allow Everything</title>
@@ -90,7 +101,8 @@
                     </children>
                 </admin>
             </resources>
-        </acl>
+        </acl>     
+        
         <layout>
             <updates>
                 <easymaintanance>

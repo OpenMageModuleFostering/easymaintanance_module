@@ -1,6 +1,6 @@
 <?php
 
-    class Biztech_Easymaintanance_Adminhtml_NotificationController extends Mage_Adminhtml_Controller_action
+    class Biztech_Easymaintanance_Adminhtml_NotificationController extends Mage_Adminhtml_Controller_Action
     {
 
         const XML_PATH_EMAIL_SENDER     = 'contacts/email/sender_email_identity';
@@ -11,11 +11,12 @@
             $this->loadLayout()
             ->_setActiveMenu('notification/items')
             ->_addBreadcrumb(Mage::helper('adminhtml')->__('Notifications Manager'), Mage::helper('adminhtml')->__('Notification Manager'));
+            $this->_addContent($this->getLayout()->createBlock('easymaintanance/adminhtml_notification'));
 
             return $this;
         }   
 
-        public function indexAction() { 
+        public function notificationAction() { 
 
             $this->_initAction()
             ->renderLayout();
