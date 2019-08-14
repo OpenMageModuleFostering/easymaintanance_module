@@ -11,10 +11,81 @@
             $this->getLayout()->getBlock('head')->setTitle(Mage::helper('customer')->__('Contact Us Form'));
             $this->renderLayout();
 
-        }
+        }     
+
+        public function postnotifyAction(){
+            $post = $this->getRequest()->getPost();
+            $notifyname = $post['notifyuname'];
+            $notifyemail = $post['notifymail'];
+
+            if($post){
+
+                // Check if user with the same email already exist in the database
+                
+                $userInNotifyList = Mage::getResourceModel('easymaintanance/notification_collection')
+                                    ->isUserNotificationEnabled($notifyemail);
+                
+                if ($userInNotifyList) {
+                    $var1 = array(
+                         'result'  => 'error',
+                         'message' => Mage::helper('easymaintanance')->__(
+                             'An user with same email address has already registered for Notification.'
+                         ),
+                     );
+                     $notifydata = json_encode($var1);
+                     $this->getResponse()->setBody($notifydata);
+                     return;
+                 }
+                else{
+                    try{
+                        $notification = Mage::getModel('easymaintanance/notification');
+                        $notification
+                             ->setName($notifyname)
+                             ->setEmail($notifyemail)
+                             ->save();
+ 
+                         $var1 = array(
+                             'result'  => 'success',
+                             'message' => Mage::helper('easymaintanance')->__(
+                                 'You are registered successfully for notification.'
+                             ),
+                         );
+                         $notifydata = json_encode($var1);
+                         $this->getResponse()->setBody($notifydata);
+                         return;
+                    }
+                    catch (Exception $e) {
+                        $var1 = array(
+                            'result' => 'error',
+                        );
+                        $message = $e->getMessage();
+                        if ($message == '') {
+                            $var1['message'] = Mage::helper('easymaintanance')->__(
+                                'Unable to submit your request. Please, try again later'
+                            );
+                        } else {
+                            $var1['message'] = $message;
+                        }
+                        $notifydata = json_encode($var1);
+                        $this->getResponse()->setBody($notifydata);
+                        return;
+                    }
+                }
+            }
+            else{
+                $var1 = array(
+                     'result'  => 'error',
+                     'message' => 'Unable to submit your request. Please, try again later',
+                );
+                $notifydata = json_encode($var1);
+                $this->getResponse()->setBody($notifydata);
+ 
+                return;
+            }
+        }                                       
 
         public function postFeedbackAction(){
-            {  
+       {  
                 $post = $this->getRequest()->getPost();
                 if ($post) {
                     $translate = Mage::getSingleton('core/translate');
@@ -56,6 +127,9 @@
                         $store=Mage::app()->getStore();
                         $mailTemplate = Mage::getModel('core/email_template');
                         /* @var $mailTemplate Mage_Core_Model_Email_Template */
+                   
+                        
+                        
                         $mailTemplate->setDesignConfig(array('area' => 'frontend'))
                         ->setReplyTo($post['feedback_email'])
                         ->sendTransactional(
@@ -100,6 +174,26 @@
                     $this->getResponse()->setBody($data);
                     return;
                 }
+            }
+        }
+
+
+        public function checkTimerAction() {
+
+            $storeId = Mage::app()->getStore()->getStoreId();
+            $isEnabled = Mage::getStoreConfig('easymaintanance/general/enabled', $storeId);
+            $timerEnabled = Mage::getStoreConfig('easymaintanance/timer/timer_enabled', $storeId);
+            $makesiteEnabled = Mage::getStoreConfig('easymaintanance/timer/site_enabled', $storeId);
+
+            if ($isEnabled == 1 && $timerEnabled == 1 && $makesiteEnabled == 1) {
+
+               
+                    $timerConfig = new Mage_Core_Model_Config();
+                    $timerConfig->saveConfig('easymaintanance/general/enabled', "0");
+                    $timerConfig->saveConfig('easymaintanance/timer/timer_enabled', "0");
+                    Mage::app()->getCacheInstance()->flush(); 
+
+                echo true;
             }
         }
 

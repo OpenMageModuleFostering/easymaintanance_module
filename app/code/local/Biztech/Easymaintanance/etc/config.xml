@@ -10,7 +10,7 @@
 <config>
     <modules>
         <Biztech_Easymaintanance>
-            <version>0.1.0</version>
+            <version>0.1.3</version>
         </Biztech_Easymaintanance>
     </modules>
     <frontend>
@@ -52,6 +52,19 @@
         </routers>
     </admin>
     <adminhtml>
+        <menu>
+            <easymaintanance module="easymaintanance">
+                <title>EasySiteMaintenance</title>
+                <sort_order>71</sort_order>               
+                <children>
+                    <items module="easymaintanance">
+                        <title>Manage Notification</title>
+                        <sort_order>0</sort_order>
+                        <action>easymaintanance/adminhtml_notification</action>
+                    </items>
+                </children>
+            </easymaintanance>
+        </menu>
         <acl>
             <resources>
                 <all>
@@ -96,6 +109,7 @@
         </translate>
     </adminhtml>   
     <global>
+
         <models>
             <easymaintanance>
                 <class>Biztech_Easymaintanance_Model</class>
@@ -107,6 +121,9 @@
                     <easymaintanance>
                         <table>easymaintanance</table>
                     </easymaintanance>
+                    <notification>
+                        <table>easysite_notify</table>
+                    </notification>
                 </entities>
             </easymaintanance_mysql4>
         </models>
@@ -141,13 +158,21 @@
             </easymaintanance>
         </helpers>
         <template>
+           
             <email>
                 <feedback_email_template translate="label" module="easymaintanance">
                     <label>Feedback</label>
                     <file>easymaintanance/contactus.html</file>
                     <type>html</type>
                 </feedback_email_template>
+                
+                <easymaintanance_general_notification_template translate="label" module="easymaintanance">
+                    <label>User Notification</label>
+                    <file>easymaintanance/notification.html</file>
+                    <type>html</type>
+                </easymaintanance_general_notification_template>
             </email>
+       
         </template>
         <events>
             <controller_front_init_routers>
@@ -176,6 +201,9 @@
 </div>
 </div>]]></maintenanceHtml>
             </general>
+            <notify>
+                <title>Notify Me</title>
+            </notify>
         </easymaintanance>
     </default>
     <crontab>
