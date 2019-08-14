@@ -1,0 +1,16 @@
+{
+    "name": "OpenMageModuleFostering/easymaintanance_module",
+    "type": "magento-module",
+    "license": "OSL-v3.0",
+    "homepage": "",
+    "description": "Easy Store Maintenance Extension allows you to put your online store in maintenance mode for specified period of time.",
+    "authors": [
+    {
+        "name": "Biztech",
+        "email": "sales@biztechconsultancy.com"
+    }
+],
+    "suggest": {
+        "magento-hackathon/magento-composer-installer": "*"
+    }
+}
