@@ -1,5 +1,5 @@
 {
-    "name": "OpenMageModuleFostering\/easymaintanance_module",
+    "name": "openmage-module-fostering\/easymaintanance_module",
     "type": "magento-module",
     "license": "http:\/\/opensource.org\/licenses\/osl-3.0.php",
     "homepage": "",
